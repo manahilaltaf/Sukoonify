@@ -35,7 +35,7 @@ export default function ProfileScreen() {
     <View style={[styles.container, { backgroundColor: colors.background }]}>
       {/* Header */}
       <View style={styles.header}>
-        <View style={[styles.avatar, { backgroundColor: isDark ? "#1E2A24" : "#DDE8DF" }]}>
+        <View style={[styles.avatar, { backgroundColor: colors.surface }]}>
           <Text style={{ fontSize: 28 }}>🧠</Text>
         </View>
         <Text style={[styles.name, { color: colors.textPrimary }]}>Anonymous User</Text>
@@ -50,29 +50,59 @@ export default function ProfileScreen() {
           icon="moon"
           label={t.darkMode}
           onPress={toggleTheme}
-          color={colors.primary}
+          iconColor={colors.primary}
+          textColor={colors.textPrimary}
+          chevronColor={colors.textSecondary}
         />
         <SettingRow
           icon="language"
           label={t.language}
           onPress={toggleLanguage}
-          color={colors.primary}
+          iconColor={colors.primary}
+          textColor={colors.textPrimary}
+          chevronColor={colors.textSecondary}
         />
-        <SettingRow icon="notifications" label={t.notifications} color={colors.primary} />
+        <SettingRow
+          icon="notifications"
+          label={t.notifications}
+          iconColor={colors.primary}
+          textColor={colors.textPrimary}
+          chevronColor={colors.textSecondary}
+        />
       </View>
 
       {/* App Info */}
       <View style={[styles.card, { backgroundColor: colors.surface }]}>
-        <SettingRow icon="shield-checkmark" label={t.privacy} color={colors.primary} />
+        <SettingRow
+          icon="shield-checkmark"
+          label={t.privacy}
+          iconColor={colors.primary}
+          textColor={colors.textPrimary}
+          chevronColor={colors.textSecondary}
+        />
         <SettingRow
           icon="help-circle"
           label={t.help}
           onPress={() => Linking.openURL("tel:1166")}
-          color={colors.primary}
+          iconColor={colors.primary}
+          textColor={colors.textPrimary}
+          chevronColor={colors.textSecondary}
         />
-        <SettingRow icon="people" label={t.community} color={colors.primary} />
+        <SettingRow
+          icon="people"
+          label={t.community}
+          iconColor={colors.primary}
+          textColor={colors.textPrimary}
+          chevronColor={colors.textSecondary}
+        />
         <Text style={[styles.helpline, { color: colors.textSecondary }]}>{t.helpline}</Text>
-        <SettingRow icon="information-circle" label={t.about} color={colors.primary} />
+        <SettingRow
+          icon="information-circle"
+          label={t.about}
+          iconColor={colors.primary}
+          textColor={colors.textPrimary}
+          chevronColor={colors.textSecondary}
+        />
       </View>
     </View>
   );
@@ -83,20 +113,24 @@ function SettingRow({
   icon,
   label,
   onPress,
-  color,
+  iconColor,
+  textColor,
+  chevronColor,
 }: {
   icon: keyof typeof Ionicons.glyphMap;
   label: string;
   onPress?: () => void;
-  color?: string;
+  iconColor?: string;
+  textColor?: string;
+  chevronColor?: string;
 }) {
   return (
     <Pressable style={styles.row} onPress={onPress}>
       <View style={styles.rowLeft}>
-        <Ionicons name={icon} size={22} color={color || "#6B8F71"} />
-        <Text style={styles.rowText}>{label}</Text>
+        <Ionicons name={icon} size={22} color={iconColor} />
+        <Text style={[styles.rowText, { color: textColor }]}>{label}</Text>
       </View>
-      <Ionicons name="chevron-forward" size={20} color="#AAA" />
+      <Ionicons name="chevron-forward" size={20} color={chevronColor} />
     </Pressable>
   );
 }
@@ -105,7 +139,14 @@ function SettingRow({
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 20 },
   header: { alignItems: "center", marginBottom: 30 },
-  avatar: { width: 72, height: 72, borderRadius: 36, alignItems: "center", justifyContent: "center", marginBottom: 10 },
+  avatar: {
+    width: 72,
+    height: 72,
+    borderRadius: 36,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+  },
   name: { fontSize: 18, fontWeight: "700" },
   subtitle: { fontSize: 13 },
   card: { borderRadius: 20, padding: 6, marginBottom: 18, elevation: 2 },

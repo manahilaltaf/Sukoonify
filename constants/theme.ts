@@ -1,20 +1,20 @@
 import { Platform } from 'react-native';
 
 /** Tint colors */
-const tintColorLight = '#5F8F72'; // updated to calm green
+const tintColorLight = '#5F8F72';
 const tintColorDark = '#7DB89A';
 
 /** GLOBAL COLORS FOR LIGHT / DARK MODE */
 export const Colors = {
   light: {
-    background: '#F4F7F5',   // main background
-    surface: '#FFFFFF',       // cards, containers
-    primary: tintColorLight,  // buttons, icons
-    textPrimary: '#24352D',   // main text
-    textSecondary: '#6B7F76', // secondary text
-    border: '#E0E6E3',        // borders, separators
+    background: '#F4F7F5',        // main background
+    surface: '#FFFFFF',            // cards, containers
+    primary: tintColorLight,       // buttons, icons
+    textPrimary: '#24352D',        // main text
+    textSecondary: '#6B7F76',      // secondary text
+    border: '#E0E6E3',
 
-    // keep old fields too (if other components use them)
+    // legacy fields
     text: '#11181C',
     tint: tintColorLight,
     icon: '#687076',
@@ -30,7 +30,7 @@ export const Colors = {
     textSecondary: '#9FBDB0',
     border: '#2E4038',
 
-    // keep old fields too
+    // legacy fields
     text: '#ECEDEE',
     tint: tintColorDark,
     icon: '#9BA1A6',
@@ -39,7 +39,7 @@ export const Colors = {
   },
 };
 
-/** FONT FAMILY (keep as it is) */
+/** FONT FAMILY */
 export const Fonts = Platform.select({
   ios: {
     sans: 'system-ui',
